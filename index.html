@@ -1,0 +1,1214 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>张明 - 全栈开发者</title>
+    <style>
+        /* Design System CSS Variables */
+        :root {
+  /* Primitive Color Tokens */
+  --color-white: rgba(255, 255, 255, 1);
+  --color-black: rgba(0, 0, 0, 1);
+  --color-cream-50: rgba(252, 252, 249, 1);
+  --color-cream-100: rgba(255, 255, 253, 1);
+  --color-gray-200: rgba(245, 245, 245, 1);
+  --color-gray-300: rgba(167, 169, 169, 1);
+  --color-gray-400: rgba(119, 124, 124, 1);
+  --color-slate-500: rgba(98, 108, 113, 1);
+  --color-brown-600: rgba(94, 82, 64, 1);
+  --color-charcoal-700: rgba(31, 33, 33, 1);
+  --color-charcoal-800: rgba(38, 40, 40, 1);
+  --color-slate-900: rgba(19, 52, 59, 1);
+  --color-teal-300: rgba(50, 184, 198, 1);
+  --color-teal-400: rgba(45, 166, 178, 1);
+  --color-teal-500: rgba(33, 128, 141, 1);
+  --color-teal-600: rgba(29, 116, 128, 1);
+  --color-teal-700: rgba(26, 104, 115, 1);
+  --color-teal-800: rgba(41, 150, 161, 1);
+  --color-red-400: rgba(255, 84, 89, 1);
+  --color-red-500: rgba(192, 21, 47, 1);
+  --color-orange-400: rgba(230, 129, 97, 1);
+  --color-orange-500: rgba(168, 75, 47, 1);
+
+  /* RGB versions for opacity control */
+  --color-brown-600-rgb: 94, 82, 64;
+  --color-teal-500-rgb: 33, 128, 141;
+  --color-slate-900-rgb: 19, 52, 59;
+  --color-slate-500-rgb: 98, 108, 113;
+  --color-red-500-rgb: 192, 21, 47;
+  --color-red-400-rgb: 255, 84, 89;
+  --color-orange-500-rgb: 168, 75, 47;
+  --color-orange-400-rgb: 230, 129, 97;
+
+  /* Background color tokens (Light Mode) */
+  --color-bg-1: rgba(59, 130, 246, 0.08); /* Light blue */
+  --color-bg-2: rgba(245, 158, 11, 0.08); /* Light yellow */
+  --color-bg-3: rgba(34, 197, 94, 0.08); /* Light green */
+  --color-bg-4: rgba(239, 68, 68, 0.08); /* Light red */
+  --color-bg-5: rgba(147, 51, 234, 0.08); /* Light purple */
+  --color-bg-6: rgba(249, 115, 22, 0.08); /* Light orange */
+  --color-bg-7: rgba(236, 72, 153, 0.08); /* Light pink */
+  --color-bg-8: rgba(6, 182, 212, 0.08); /* Light cyan */
+
+  /* Semantic Color Tokens (Light Mode) */
+  --color-background: var(--color-cream-50);
+  --color-surface: var(--color-cream-100);
+  --color-text: var(--color-slate-900);
+  --color-text-secondary: var(--color-slate-500);
+  --color-primary: var(--color-teal-500);
+  --color-primary-hover: var(--color-teal-600);
+  --color-primary-active: var(--color-teal-700);
+  --color-secondary: rgba(var(--color-brown-600-rgb), 0.12);
+  --color-secondary-hover: rgba(var(--color-brown-600-rgb), 0.2);
+  --color-secondary-active: rgba(var(--color-brown-600-rgb), 0.25);
+  --color-border: rgba(var(--color-brown-600-rgb), 0.2);
+  --color-btn-primary-text: var(--color-cream-50);
+  --color-card-border: rgba(var(--color-brown-600-rgb), 0.12);
+  --color-card-border-inner: rgba(var(--color-brown-600-rgb), 0.12);
+  --color-error: var(--color-red-500);
+  --color-success: var(--color-teal-500);
+  --color-warning: var(--color-orange-500);
+  --color-info: var(--color-slate-500);
+  --color-focus-ring: rgba(var(--color-teal-500-rgb), 0.4);
+  --color-select-caret: rgba(var(--color-slate-900-rgb), 0.8);
+
+  /* Common style patterns */
+  --focus-ring: 0 0 0 3px var(--color-focus-ring);
+  --focus-outline: 2px solid var(--color-primary);
+  --status-bg-opacity: 0.15;
+  --status-border-opacity: 0.25;
+  --select-caret-light: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23134252' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  --select-caret-dark: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23f5f5f5' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+
+  /* RGB versions for opacity control */
+  --color-success-rgb: 33, 128, 141;
+  --color-error-rgb: 192, 21, 47;
+  --color-warning-rgb: 168, 75, 47;
+  --color-info-rgb: 98, 108, 113;
+
+  /* Typography */
+  --font-family-base: "FKGroteskNeue", "Geist", "Inter", -apple-system,
+    BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-family-mono: "Berkeley Mono", ui-monospace, SFMono-Regular, Menlo,
+    Monaco, Consolas, monospace;
+  --font-size-xs: 11px;
+  --font-size-sm: 12px;
+  --font-size-base: 14px;
+  --font-size-md: 14px;
+  --font-size-lg: 16px;
+  --font-size-xl: 18px;
+  --font-size-2xl: 20px;
+  --font-size-3xl: 24px;
+  --font-size-4xl: 30px;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 550;
+  --font-weight-bold: 600;
+  --line-height-tight: 1.2;
+  --line-height-normal: 1.5;
+  --letter-spacing-tight: -0.01em;
+
+  /* Spacing */
+  --space-0: 0;
+  --space-1: 1px;
+  --space-2: 2px;
+  --space-4: 4px;
+  --space-6: 6px;
+  --space-8: 8px;
+  --space-10: 10px;
+  --space-12: 12px;
+  --space-16: 16px;
+  --space-20: 20px;
+  --space-24: 24px;
+  --space-32: 32px;
+
+  /* Border Radius */
+  --radius-sm: 6px;
+  --radius-base: 8px;
+  --radius-md: 10px;
+  --radius-lg: 12px;
+  --radius-full: 9999px;
+
+  /* Shadows */
+  --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.02);
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.02);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.04),
+    0 2px 4px -1px rgba(0, 0, 0, 0.02);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.04),
+    0 4px 6px -2px rgba(0, 0, 0, 0.02);
+  --shadow-inset-sm: inset 0 1px 0 rgba(255, 255, 255, 0.15),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.03);
+
+  /* Animation */
+  --duration-fast: 150ms;
+  --duration-normal: 250ms;
+  --ease-standard: cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* Layout */
+  --container-sm: 640px;
+  --container-md: 768px;
+  --container-lg: 1024px;
+  --container-xl: 1280px;
+}
+
+/* Dark mode colors */
+@media (prefers-color-scheme: dark) {
+  :root {
+    /* RGB versions for opacity control (Dark Mode) */
+    --color-gray-400-rgb: 119, 124, 124;
+    --color-teal-300-rgb: 50, 184, 198;
+    --color-gray-300-rgb: 167, 169, 169;
+    --color-gray-200-rgb: 245, 245, 245;
+
+    /* Background color tokens (Dark Mode) */
+    --color-bg-1: rgba(29, 78, 216, 0.15); /* Dark blue */
+    --color-bg-2: rgba(180, 83, 9, 0.15); /* Dark yellow */
+    --color-bg-3: rgba(21, 128, 61, 0.15); /* Dark green */
+    --color-bg-4: rgba(185, 28, 28, 0.15); /* Dark red */
+    --color-bg-5: rgba(107, 33, 168, 0.15); /* Dark purple */
+    --color-bg-6: rgba(194, 65, 12, 0.15); /* Dark orange */
+    --color-bg-7: rgba(190, 24, 93, 0.15); /* Dark pink */
+    --color-bg-8: rgba(8, 145, 178, 0.15); /* Dark cyan */
+
+    /* Semantic Color Tokens (Dark Mode) */
+    --color-background: var(--color-charcoal-700);
+    --color-surface: var(--color-charcoal-800);
+    --color-text: var(--color-gray-200);
+    --color-text-secondary: rgba(var(--color-gray-300-rgb), 0.7);
+    --color-primary: var(--color-teal-300);
+    --color-primary-hover: var(--color-teal-400);
+    --color-primary-active: var(--color-teal-800);
+    --color-secondary: rgba(var(--color-gray-400-rgb), 0.15);
+    --color-secondary-hover: rgba(var(--color-gray-400-rgb), 0.25);
+    --color-secondary-active: rgba(var(--color-gray-400-rgb), 0.3);
+    --color-border: rgba(var(--color-gray-400-rgb), 0.3);
+    --color-error: var(--color-red-400);
+    --color-success: var(--color-teal-300);
+    --color-warning: var(--color-orange-400);
+    --color-info: var(--color-gray-300);
+    --color-focus-ring: rgba(var(--color-teal-300-rgb), 0.4);
+    --color-btn-primary-text: var(--color-slate-900);
+    --color-card-border: rgba(var(--color-gray-400-rgb), 0.2);
+    --color-card-border-inner: rgba(var(--color-gray-400-rgb), 0.15);
+    --shadow-inset-sm: inset 0 1px 0 rgba(255, 255, 255, 0.1),
+      inset 0 -1px 0 rgba(0, 0, 0, 0.15);
+    --button-border-secondary: rgba(var(--color-gray-400-rgb), 0.2);
+    --color-border-secondary: rgba(var(--color-gray-400-rgb), 0.2);
+    --color-select-caret: rgba(var(--color-gray-200-rgb), 0.8);
+
+    /* RGB versions for dark mode */
+    --color-success-rgb: var(--color-teal-300-rgb);
+    --color-error-rgb: var(--color-red-400-rgb);
+    --color-warning-rgb: var(--color-orange-400-rgb);
+    --color-info-rgb: var(--color-gray-300-rgb);
+  }
+}
+
+@font-face {
+  font-family: 'FKGroteskNeue';
+  src: url('https://r2cdn.perplexity.ai/fonts/FKGroteskNeue.woff2')
+    format('woff2');
+}
+
+        /* Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: var(--font-size-base);
+        }
+
+        body {
+            font-family: var(--font-family-base);
+            background-color: var(--color-background);
+            color: var(--color-text);
+            line-height: var(--line-height-normal);
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(252, 252, 249, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--color-border);
+            transition: all var(--duration-normal) var(--ease-standard);
+        }
+
+        .navbar.scrolled {
+            background: rgba(252, 252, 249, 0.98);
+            box-shadow: var(--shadow-md);
+        }
+
+        .nav-container {
+            max-width: var(--container-xl);
+            margin: 0 auto;
+            padding: 0 var(--space-16);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 64px;
+        }
+
+        .logo {
+            font-size: var(--font-size-xl);
+            font-weight: var(--font-weight-bold);
+            color: var(--color-text);
+            text-decoration: none;
+            letter-spacing: var(--letter-spacing-tight);
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: var(--space-32);
+        }
+
+        .nav-link {
+            color: var(--color-text);
+            text-decoration: none;
+            font-weight: var(--font-weight-medium);
+            transition: color var(--duration-fast) var(--ease-standard);
+            position: relative;
+        }
+
+        .nav-link:hover {
+            color: var(--color-primary);
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--color-primary);
+            transition: width var(--duration-normal) var(--ease-standard);
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: var(--font-size-xl);
+            color: var(--color-text);
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 80px var(--space-16) var(--space-32);
+            background: var(--color-background);
+        }
+
+        .hero-container {
+            max-width: var(--container-xl);
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: var(--space-32);
+            align-items: center;
+        }
+
+        .hero-content h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: var(--font-weight-bold);
+            color: var(--color-text);
+            margin-bottom: var(--space-16);
+            letter-spacing: var(--letter-spacing-tight);
+            line-height: var(--line-height-tight);
+        }
+
+        .hero-subtitle {
+            font-size: var(--font-size-xl);
+            color: var(--color-primary);
+            font-weight: var(--font-weight-medium);
+            margin-bottom: var(--space-16);
+        }
+
+        .hero-tagline {
+            font-size: var(--font-size-lg);
+            color: var(--color-text-secondary);
+            margin-bottom: var(--space-32);
+            line-height: 1.6;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: var(--space-16);
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: var(--space-12) var(--space-24);
+            border-radius: var(--radius-base);
+            font-size: var(--font-size-base);
+            font-weight: var(--font-weight-medium);
+            text-decoration: none;
+            cursor: pointer;
+            border: none;
+            transition: all var(--duration-normal) var(--ease-standard);
+        }
+
+        .btn-primary {
+            background: var(--color-primary);
+            color: var(--color-btn-primary-text);
+        }
+
+        .btn-primary:hover {
+            background: var(--color-primary-hover);
+            transform: translateY(-1px);
+        }
+
+        .btn-secondary {
+            background: var(--color-secondary);
+            color: var(--color-text);
+            border: 1px solid var(--color-border);
+        }
+
+        .btn-secondary:hover {
+            background: var(--color-secondary-hover);
+            transform: translateY(-1px);
+        }
+
+        .hero-avatar {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .avatar-image {
+            width: 280px;
+            height: 280px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--color-primary);
+            box-shadow: var(--shadow-lg);
+        }
+
+        /* Section Styles */
+        .section {
+            padding: 80px var(--space-16);
+        }
+
+        .section-container {
+            max-width: var(--container-xl);
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title {
+            font-size: var(--font-size-3xl);
+            font-weight: var(--font-weight-bold);
+            color: var(--color-text);
+            margin-bottom: var(--space-16);
+            letter-spacing: var(--letter-spacing-tight);
+        }
+
+        .section-subtitle {
+            font-size: var(--font-size-lg);
+            color: var(--color-text-secondary);
+        }
+
+        /* About Section */
+        .about {
+            background: var(--color-surface);
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 60px;
+            align-items: start;
+        }
+
+        .about-text p {
+            font-size: var(--font-size-lg);
+            color: var(--color-text);
+            margin-bottom: var(--space-20);
+            line-height: 1.7;
+        }
+
+        .skills-cloud {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--space-12);
+        }
+
+        .skill-tag {
+            background: var(--color-bg-1);
+            color: var(--color-text);
+            padding: var(--space-8) var(--space-16);
+            border-radius: var(--radius-full);
+            font-size: var(--font-size-sm);
+            font-weight: var(--font-weight-medium);
+            border: 1px solid var(--color-primary);
+            transition: all var(--duration-normal) var(--ease-standard);
+        }
+
+        .skill-tag:hover {
+            background: var(--color-primary);
+            color: var(--color-btn-primary-text);
+            transform: translateY(-2px);
+        }
+
+        /* Blog Section */
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: var(--space-32);
+        }
+
+        .blog-card {
+            background: var(--color-surface);
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--color-card-border);
+            padding: var(--space-24);
+            transition: all var(--duration-normal) var(--ease-standard);
+            cursor: pointer;
+        }
+
+        .blog-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .blog-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: var(--space-16);
+            font-size: var(--font-size-sm);
+            color: var(--color-text-secondary);
+        }
+
+        .blog-title {
+            font-size: var(--font-size-xl);
+            font-weight: var(--font-weight-semibold);
+            color: var(--color-text);
+            margin-bottom: var(--space-12);
+            line-height: var(--line-height-tight);
+        }
+
+        .blog-excerpt {
+            color: var(--color-text-secondary);
+            line-height: 1.6;
+            margin-bottom: var(--space-16);
+        }
+
+        .read-more {
+            color: var(--color-primary);
+            font-weight: var(--font-weight-medium);
+            text-decoration: none;
+            font-size: var(--font-size-sm);
+        }
+
+        .read-more:hover {
+            color: var(--color-primary-hover);
+        }
+
+        /* Projects Section */
+        .projects {
+            background: var(--color-surface);
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: var(--space-32);
+        }
+
+        .project-card {
+            background: var(--color-background);
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--color-card-border);
+            padding: var(--space-24);
+            transition: all var(--duration-normal) var(--ease-standard);
+        }
+
+        .project-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .project-name {
+            font-size: var(--font-size-xl);
+            font-weight: var(--font-weight-semibold);
+            color: var(--color-text);
+            margin-bottom: var(--space-12);
+        }
+
+        .project-description {
+            color: var(--color-text-secondary);
+            line-height: 1.6;
+            margin-bottom: var(--space-20);
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--space-8);
+            margin-bottom: var(--space-20);
+        }
+
+        .tech-tag {
+            background: var(--color-bg-2);
+            color: var(--color-text);
+            padding: var(--space-4) var(--space-12);
+            border-radius: var(--radius-sm);
+            font-size: var(--font-size-xs);
+            font-weight: var(--font-weight-medium);
+        }
+
+        .project-links {
+            display: flex;
+            gap: var(--space-16);
+        }
+
+        .project-link {
+            color: var(--color-primary);
+            text-decoration: none;
+            font-size: var(--font-size-sm);
+            font-weight: var(--font-weight-medium);
+            display: flex;
+            align-items: center;
+            gap: var(--space-4);
+        }
+
+        .project-link:hover {
+            color: var(--color-primary-hover);
+        }
+
+        /* Contact Section */
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: start;
+        }
+
+        .contact-info h3 {
+            font-size: var(--font-size-2xl);
+            font-weight: var(--font-weight-semibold);
+            color: var(--color-text);
+            margin-bottom: var(--space-20);
+        }
+
+        .contact-info p {
+            font-size: var(--font-size-lg);
+            color: var(--color-text-secondary);
+            margin-bottom: var(--space-24);
+            line-height: 1.6;
+        }
+
+        .contact-links {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-16);
+        }
+
+        .contact-link {
+            display: flex;
+            align-items: center;
+            gap: var(--space-12);
+            color: var(--color-text);
+            text-decoration: none;
+            font-size: var(--font-size-base);
+            padding: var(--space-8);
+            border-radius: var(--radius-base);
+            transition: all var(--duration-normal) var(--ease-standard);
+        }
+
+        .contact-link:hover {
+            background: var(--color-secondary);
+            color: var(--color-primary);
+        }
+
+        .contact-form {
+            background: var(--color-surface);
+            padding: var(--space-32);
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--color-card-border);
+        }
+
+        .form-group {
+            margin-bottom: var(--space-20);
+        }
+
+        .form-label {
+            display: block;
+            font-size: var(--font-size-sm);
+            font-weight: var(--font-weight-medium);
+            color: var(--color-text);
+            margin-bottom: var(--space-8);
+        }
+
+        .form-control {
+            width: 100%;
+            padding: var(--space-12);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-base);
+            font-size: var(--font-size-base);
+            background: var(--color-background);
+            color: var(--color-text);
+            transition: border-color var(--duration-fast) var(--ease-standard);
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--color-primary);
+            box-shadow: var(--focus-ring);
+        }
+
+        textarea.form-control {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--color-surface);
+            padding: 40px var(--space-16);
+            border-top: 1px solid var(--color-border);
+        }
+
+        .footer-container {
+            max-width: var(--container-xl);
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-text {
+            color: var(--color-text-secondary);
+            font-size: var(--font-size-sm);
+        }
+
+        .social-links {
+            display: flex;
+            gap: var(--space-16);
+        }
+
+        .social-link {
+            color: var(--color-text-secondary);
+            font-size: var(--font-size-lg);
+            transition: color var(--duration-fast) var(--ease-standard);
+        }
+
+        .social-link:hover {
+            color: var(--color-primary);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .hero-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: var(--space-24);
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .contact-container {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .hero {
+                padding: 60px var(--space-16) var(--space-24);
+            }
+
+            .section {
+                padding: 60px var(--space-16);
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-subtitle {
+                font-size: var(--font-size-lg);
+            }
+
+            .avatar-image {
+                width: 200px;
+                height: 200px;
+            }
+
+            .blog-grid,
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-container {
+                flex-direction: column;
+                gap: var(--space-16);
+                text-align: center;
+            }
+        }
+
+        /* Dark mode for navbar */
+        @media (prefers-color-scheme: dark) {
+            .navbar {
+                background: rgba(31, 33, 33, 0.95);
+            }
+
+            .navbar.scrolled {
+                background: rgba(31, 33, 33, 0.98);
+            }
+        }
+
+        /* Utility Classes */
+        .text-center {
+            text-align: center;
+        }
+
+        .mb-0 {
+            margin-bottom: 0;
+        }
+
+        .mt-16 {
+            margin-top: var(--space-16);
+        }
+
+        /* Toast notification styles */
+        .toast {
+            position: fixed;
+            top: 80px;
+            right: var(--space-16);
+            background: var(--color-success);
+            color: var(--color-btn-primary-text);
+            padding: var(--space-12) var(--space-20);
+            border-radius: var(--radius-base);
+            box-shadow: var(--shadow-lg);
+            z-index: 1001;
+            transform: translateX(100%);
+            transition: transform var(--duration-normal) var(--ease-standard);
+        }
+
+        .toast.show {
+            transform: translateX(0);
+        }
+
+        /* Smooth scrolling for anchors */
+        html {
+            scroll-padding-top: 80px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#home" class="logo">张明</a>
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link">首页</a></li>
+                <li><a href="#about" class="nav-link">关于</a></li>
+                <li><a href="#blog" class="nav-link">博客</a></li>
+                <li><a href="#projects" class="nav-link">项目</a></li>
+                <li><a href="#contact" class="nav-link">联系</a></li>
+            </ul>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                ☰
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1>你好，我是张明</h1>
+                <div class="hero-subtitle">全栈开发者 · 设计爱好者 · 终身学习者</div>
+                <p class="hero-tagline">用代码创造美好体验，用设计传达价值理念</p>
+                <div class="hero-buttons">
+                    <a href="#projects" class="btn btn-primary">查看作品</a>
+                    <a href="#contact" class="btn btn-secondary">联系我</a>
+                </div>
+            </div>
+            <div class="hero-avatar">
+                <img src="https://user-gen-media-assets.s3.amazonaws.com/seedream_images/344e7c22-22f2-41d1-9402-bc0f3b1503a3.png" alt="张明的头像" class="avatar-image">
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section about">
+        <div class="section-container">
+            <div class="section-header">
+                <h2 class="section-title">关于我</h2>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>我是一名充满热情的全栈开发者，专注于创建优雅且高效的数字解决方案。</p>
+                    <p>拥有5年的Web开发经验，精通React、Node.js和现代设计工具。</p>
+                    <p>我相信好的设计不仅是美观，更是功能与体验的完美结合。</p>
+                    <p class="mb-0">工作之余，我喜欢阅读、摄影和探索新技术。</p>
+                </div>
+                <div class="skills-section">
+                    <h3 style="margin-bottom: var(--space-20); color: var(--color-text);">技能专长</h3>
+                    <div class="skills-cloud">
+                        <span class="skill-tag">JavaScript</span>
+                        <span class="skill-tag">React</span>
+                        <span class="skill-tag">Node.js</span>
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">UI/UX</span>
+                        <span class="skill-tag">Figma</span>
+                        <span class="skill-tag">TypeScript</span>
+                        <span class="skill-tag">Next.js</span>
+                        <span class="skill-tag">Vue.js</span>
+                        <span class="skill-tag">Tailwind CSS</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Section -->
+    <section id="blog" class="section">
+        <div class="section-container">
+            <div class="section-header">
+                <h2 class="section-title">最新文章</h2>
+                <p class="section-subtitle">分享我的开发经验和思考</p>
+            </div>
+            <div class="blog-grid">
+                <article class="blog-card" onclick="showBlogModal('如何构建一个现代化的个人网站')">
+                    <div class="blog-meta">
+                        <span>2025年10月15日</span>
+                        <span>8分钟</span>
+                    </div>
+                    <h3 class="blog-title">如何构建一个现代化的个人网站</h3>
+                    <p class="blog-excerpt">从设计到部署的完整指南，帮助你打造一个独特的线上名片。本文将介绍最新的设计趋势、技术栈选择以及实用的开发技巧。</p>
+                    <a href="#" class="read-more">阅读更多 →</a>
+                </article>
+
+                <article class="blog-card" onclick="showBlogModal('React 19的新特性解析')">
+                    <div class="blog-meta">
+                        <span>2025年10月8日</span>
+                        <span>12分钟</span>
+                    </div>
+                    <h3 class="blog-title">React 19的新特性解析</h3>
+                    <p class="blog-excerpt">深入了解最新版本带来的改变，包括服务器组件、并发特性优化等核心更新。这些新特性将如何改变我们的开发方式？</p>
+                    <a href="#" class="read-more">阅读更多 →</a>
+                </article>
+
+                <article class="blog-card" onclick="showBlogModal('极简主义设计的力量')">
+                    <div class="blog-meta">
+                        <span>2025年9月28日</span>
+                        <span>6分钟</span>
+                    </div>
+                    <h3 class="blog-title">极简主义设计的力量</h3>
+                    <p class="blog-excerpt">少即是多的设计哲学在数字产品中的应用。探讨如何通过简化设计提升用户体验，以及极简设计背后的心理学原理。</p>
+                    <a href="#" class="read-more">阅读更多 →</a>
+                </article>
+
+                <article class="blog-card" onclick="showBlogModal('我的开发工具箱推荐')">
+                    <div class="blog-meta">
+                        <span>2025年9月15日</span>
+                        <span>10分钟</span>
+                    </div>
+                    <h3 class="blog-title">我的开发工具箱推荐</h3>
+                    <p class="blog-excerpt">分享我日常使用的开发工具、效率插件和工作流程。从代码编辑器到版本控制，从设计工具到项目管理。</p>
+                    <a href="#" class="read-more">阅读更多 →</a>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="section projects">
+        <div class="section-container">
+            <div class="section-header">
+                <h2 class="section-title">精选项目</h2>
+                <p class="section-subtitle">我最引以为豪的一些作品</p>
+            </div>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <h3 class="project-name">任务管理应用</h3>
+                    <p class="project-description">一个基于React的现代任务管理工具，支持项目分组、优先级设置和进度追踪</p>
+                    <div class="tech-stack">
+                        <span class="tech-tag">React</span>
+                        <span class="tech-tag">Redux</span>
+                        <span class="tech-tag">Firebase</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="project-link" onclick="showProjectModal('GitHub')">
+                            🔗 GitHub
+                        </a>
+                        <a href="#" class="project-link" onclick="showProjectModal('演示')">
+                            🚀 演示
+                        </a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <h3 class="project-name">个人博客系统</h3>
+                    <p class="project-description">使用Next.js构建的静态博客生成器，支持MDX、代码高亮和暗色模式</p>
+                    <div class="tech-stack">
+                        <span class="tech-tag">Next.js</span>
+                        <span class="tech-tag">MDX</span>
+                        <span class="tech-tag">Tailwind CSS</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="project-link" onclick="showProjectModal('GitHub')">
+                            🔗 GitHub
+                        </a>
+                        <a href="#" class="project-link" onclick="showProjectModal('演示')">
+                            🚀 演示
+                        </a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <h3 class="project-name">天气预报应用</h3>
+                    <p class="project-description">实时天气查询与预报可视化，提供7天天气趋势和空气质量指数</p>
+                    <div class="tech-stack">
+                        <span class="tech-tag">Vue.js</span>
+                        <span class="tech-tag">API Integration</span>
+                        <span class="tech-tag">Charts.js</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="project-link" onclick="showProjectModal('GitHub')">
+                            🔗 GitHub
+                        </a>
+                        <a href="#" class="project-link" onclick="showProjectModal('演示')">
+                            🚀 演示
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section">
+        <div class="section-container">
+            <div class="section-header">
+                <h2 class="section-title">联系我</h2>
+            </div>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>有项目想法或合作机会？</h3>
+                    <p>随时联系我！我很乐意与您讨论新的项目想法，分享技术经验，或者探讨合作机会。</p>
+                    <div class="contact-links">
+                        <a href="mailto:zhang.ming@example.com" class="contact-link">
+                            📧 zhang.ming@example.com
+                        </a>
+                        <a href="#" class="contact-link" onclick="showContactModal('GitHub')">
+                            🔗 github.com/zhangming
+                        </a>
+                        <a href="#" class="contact-link" onclick="showContactModal('LinkedIn')">
+                            💼 linkedin.com/in/zhangming
+                        </a>
+                        <a href="#" class="contact-link" onclick="showContactModal('Twitter')">
+                            🐦 @zhangming_dev
+                        </a>
+                    </div>
+                </div>
+                <form class="contact-form" onsubmit="handleFormSubmit(event)">
+                    <div class="form-group">
+                        <label for="name" class="form-label">姓名</label>
+                        <input type="text" id="name" name="name" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email" class="form-label">邮箱</label>
+                        <input type="email" id="email" name="email" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message" class="form-label">消息</label>
+                        <textarea id="message" name="message" class="form-control" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">发送消息</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <p class="footer-text">© 2025 张明. All rights reserved.</p>
+            <div class="social-links">
+                <a href="#" class="social-link" onclick="showContactModal('GitHub')">🔗</a>
+                <a href="#" class="social-link" onclick="showContactModal('LinkedIn')">💼</a>
+                <a href="#" class="social-link" onclick="showContactModal('Twitter')">🐦</a>
+                <a href="mailto:zhang.ming@example.com" class="social-link">📧</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Toast notification function
+        function showToast(message, type = 'success') {
+            const toast = document.createElement('div');
+            toast.className = 'toast';
+            toast.textContent = message;
+            
+            if (type === 'error') {
+                toast.style.background = 'var(--color-error)';
+            }
+            
+            document.body.appendChild(toast);
+            
+            // Show toast
+            setTimeout(() => {
+                toast.classList.add('show');
+            }, 100);
+            
+            // Hide and remove toast
+            setTimeout(() => {
+                toast.classList.remove('show');
+                setTimeout(() => {
+                    document.body.removeChild(toast);
+                }, 300);
+            }, 3000);
+        }
+
+        // Blog modal function
+        function showBlogModal(title) {
+            showToast(`正在加载文章《${title}》...`);
+        }
+
+        // Project modal function
+        function showProjectModal(linkType) {
+            showToast(`正在跳转到${linkType}页面...`);
+        }
+
+        // Contact modal function
+        function showContactModal(platform) {
+            showToast(`正在打开${platform}页面...`);
+        }
+
+        // Form submission
+        function handleFormSubmit(event) {
+            event.preventDefault();
+            
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+            
+            if (name && email && message) {
+                showToast('消息发送成功！我会尽快回复您。');
+                
+                // Reset form
+                document.getElementById('name').value = '';
+                document.getElementById('email').value = '';
+                document.getElementById('message').value = '';
+            } else {
+                showToast('请填写所有必填字段', 'error');
+            }
+        }
+
+        // Mobile menu functionality (placeholder)
+        document.getElementById('mobileMenuBtn').addEventListener('click', function() {
+            showToast('移动菜单功能开发中...');
+        });
+
+        // Add subtle fade-in animation for sections
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Apply fade-in effect to sections
+        document.querySelectorAll('.section').forEach(section => {
+            section.style.opacity = '0';
+            section.style.transform = 'translateY(30px)';
+            section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(section);
+        });
+
+        // Initial load animation for hero section
+        document.addEventListener('DOMContentLoaded', function() {
+            const heroContent = document.querySelector('.hero-content');
+            const heroAvatar = document.querySelector('.hero-avatar');
+            
+            heroContent.style.opacity = '0';
+            heroContent.style.transform = 'translateY(30px)';
+            heroAvatar.style.opacity = '0';
+            heroAvatar.style.transform = 'scale(0.8)';
+            
+            setTimeout(() => {
+                heroContent.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+                heroAvatar.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+                
+                heroContent.style.opacity = '1';
+                heroContent.style.transform = 'translateY(0)';
+                heroAvatar.style.opacity = '1';
+                heroAvatar.style.transform = 'scale(1)';
+            }, 300);
+        });
+    </script>
+</body>
+</html>
